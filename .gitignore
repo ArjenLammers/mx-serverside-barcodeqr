@@ -1,0 +1,9 @@
+/.classpath
+/.project
+/Barcode.mpr.bak
+/Barcode.mpr.lock
+/Barcode_main.launch
+/.mendix-cache
+/.svn
+/deployment
+/releases
