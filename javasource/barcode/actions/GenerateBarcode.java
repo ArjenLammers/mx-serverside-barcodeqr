@@ -12,6 +12,7 @@ package barcode.actions;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -49,6 +50,9 @@ public class GenerateBarcode extends CustomJavaAction<java.lang.Void>
 		// BEGIN USER CODE
 		MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 		BarcodeFormat bcFormat = BarcodeFormat.valueOf(format.name());
+		Hashtable hints = new Hashtable();
+		hints.put(EncodeHintType.CHARACTER_SET, "utf-8"); // add hints to support utf-8
+		BitMatrix matrix = multiFormatWriter.encode(text, bcFormat, width.intValue(), height.intValue(), hints); // add hints
 		BitMatrix matrix = multiFormatWriter.encode(text, bcFormat, width.intValue(), height.intValue());
 		BufferedImage bufImage = MatrixToImageWriter.toBufferedImage(matrix);
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
