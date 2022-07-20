@@ -51,9 +51,8 @@ public class GenerateBarcode extends CustomJavaAction<java.lang.Void>
 		MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 		BarcodeFormat bcFormat = BarcodeFormat.valueOf(format.name());
 		Hashtable hints = new Hashtable();
-		hints.put(EncodeHintType.CHARACTER_SET, "utf-8"); // add hints to support utf-8
-		BitMatrix matrix = multiFormatWriter.encode(text, bcFormat, width.intValue(), height.intValue(), hints); // add hints
-		BitMatrix matrix = multiFormatWriter.encode(text, bcFormat, width.intValue(), height.intValue());
+		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+		BitMatrix matrix = multiFormatWriter.encode(text, bcFormat, width.intValue(), height.intValue(), hints);
 		BufferedImage bufImage = MatrixToImageWriter.toBufferedImage(matrix);
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		try {
