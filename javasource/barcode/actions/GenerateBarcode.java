@@ -12,7 +12,6 @@ package barcode.actions;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import com.google.zxing.BarcodeFormat;
@@ -24,35 +23,44 @@ import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class GenerateBarcode extends CustomJavaAction<java.lang.Void>
+public class GenerateBarcode extends UserAction<java.lang.Void>
 {
-	private java.lang.String text;
-	private barcode.proxies.BarcodeFormat format;
-	private java.lang.Long width;
-	private java.lang.Long height;
-	private IMendixObject __destination;
-	private system.proxies.Image destination;
+	private final java.lang.String text;
+	private final barcode.proxies.BarcodeFormat format;
+	private final java.lang.Long width;
+	private final java.lang.Long height;
+	/** @deprecated use destination.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __destination;
+	private final system.proxies.Image destination;
 
-	public GenerateBarcode(IContext context, java.lang.String text, java.lang.String format, java.lang.Long width, java.lang.Long height, IMendixObject destination)
+	public GenerateBarcode(
+		IContext context,
+		java.lang.String _text,
+		java.lang.String _format,
+		java.lang.Long _width,
+		java.lang.Long _height,
+		IMendixObject _destination
+	)
 	{
 		super(context);
-		this.text = text;
-		this.format = format == null ? null : barcode.proxies.BarcodeFormat.valueOf(format);
-		this.width = width;
-		this.height = height;
-		this.__destination = destination;
+		this.text = _text;
+		this.format = _format == null ? null : barcode.proxies.BarcodeFormat.valueOf(_format);
+		this.width = _width;
+		this.height = _height;
+		this.__destination = _destination;
+		this.destination = _destination == null ? null : system.proxies.Image.initialize(getContext(), _destination);
 	}
 
 	@java.lang.Override
 	public java.lang.Void executeAction() throws Exception
 	{
-		this.destination = __destination == null ? null : system.proxies.Image.initialize(getContext(), __destination);
-
 		// BEGIN USER CODE
 		MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 		BarcodeFormat bcFormat = BarcodeFormat.valueOf(format.name());
-		Hashtable hints = new Hashtable();
+		Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		BitMatrix matrix = multiFormatWriter.encode(text, bcFormat, width.intValue(), height.intValue(), hints);
 		BufferedImage bufImage = MatrixToImageWriter.toBufferedImage(matrix);
@@ -70,6 +78,7 @@ public class GenerateBarcode extends CustomJavaAction<java.lang.Void>
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()

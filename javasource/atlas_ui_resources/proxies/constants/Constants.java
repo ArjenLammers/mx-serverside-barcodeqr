@@ -6,8 +6,13 @@ package atlas_ui_resources.proxies.constants;
 
 import com.mendix.core.Core;
 
-public class Constants
+public final class Constants
 {
+	/**
+	 * Private constructor to prevent instantiation of this class. 
+	 */
+	private Constants() {}
+
 	// These are the constants for the Atlas_UI_Resources module
 
 	public static java.lang.String getAtlas_UI_Resources_Version()

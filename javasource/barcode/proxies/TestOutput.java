@@ -17,6 +17,7 @@ public class TestOutput extends system.proxies.Image
 	public enum MemberNames
 	{
 		PublicThumbnailPath("PublicThumbnailPath"),
+		EnableCaching("EnableCaching"),
 		FileID("FileID"),
 		Name("Name"),
 		DeleteAfterDownload("DeleteAfterDownload"),
@@ -24,7 +25,7 @@ public class TestOutput extends system.proxies.Image
 		HasContents("HasContents"),
 		Size("Size");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -40,28 +41,23 @@ public class TestOutput extends system.proxies.Image
 
 	public TestOutput(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "Barcode.TestOutput"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected TestOutput(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testOutputMendixObject)
 	{
 		super(context, testOutputMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("Barcode.TestOutput", testOutputMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a Barcode.TestOutput");
-	}
-
-	/**
-	 * @deprecated Use 'TestOutput.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static barcode.proxies.TestOutput initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return barcode.proxies.TestOutput.load(context, mendixIdentifier);
+		if (!com.mendix.core.Core.isSubClassOf(entityName, testOutputMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static barcode.proxies.TestOutput initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -76,18 +72,19 @@ public class TestOutput extends system.proxies.Image
 
 	public static java.util.List<barcode.proxies.TestOutput> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<barcode.proxies.TestOutput> result = new java.util.ArrayList<barcode.proxies.TestOutput>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//Barcode.TestOutput" + xpathConstraint))
-			result.add(barcode.proxies.TestOutput.initialize(context, obj));
-		return result;
+		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
+			.execute(context)
+			.stream()
+			.map(obj -> barcode.proxies.TestOutput.initialize(context, obj))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final barcode.proxies.TestOutput that = (barcode.proxies.TestOutput) obj;
@@ -102,22 +99,13 @@ public class TestOutput extends system.proxies.Image
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
-		return "Barcode.TestOutput";
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Override
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
+		return entityName;
 	}
 }

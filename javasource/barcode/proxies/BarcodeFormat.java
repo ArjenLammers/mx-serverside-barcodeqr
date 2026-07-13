@@ -10,33 +10,30 @@ public enum BarcodeFormat
 	CODABAR(new java.lang.String[][] { new java.lang.String[] { "en_US", "Codabar" } }),
 	CODE_39(new java.lang.String[][] { new java.lang.String[] { "en_US", "Code_39" } }),
 	CODE_93(new java.lang.String[][] { new java.lang.String[] { "en_US", "Code_93" } }),
+	CODE_128(new java.lang.String[][] { new java.lang.String[] { "en_US", "Code 128" } }),
 	DATA_MATRIX(new java.lang.String[][] { new java.lang.String[] { "en_US", "Data Matrix" } }),
 	EAN_8(new java.lang.String[][] { new java.lang.String[] { "en_US", "EAN 8" } }),
 	EAN_13(new java.lang.String[][] { new java.lang.String[] { "en_US", "EAN 13" } }),
 	ITF(new java.lang.String[][] { new java.lang.String[] { "en_US", "ITF" } }),
-	MAXICODE(new java.lang.String[][] { new java.lang.String[] { "en_US", "MaxiCode" } }),
 	PDF_417(new java.lang.String[][] { new java.lang.String[] { "en_US", "PDF 417" } }),
 	QR_CODE(new java.lang.String[][] { new java.lang.String[] { "en_US", "QR Code" } }),
-	RSS_14(new java.lang.String[][] { new java.lang.String[] { "en_US", "RSS 14" } }),
-	RSS_EXPANDED(new java.lang.String[][] { new java.lang.String[] { "en_US", "RSS Expanded" } }),
 	UPC_A(new java.lang.String[][] { new java.lang.String[] { "en_US", "UPC A" } }),
 	UPC_E(new java.lang.String[][] { new java.lang.String[] { "en_US", "UPC E" } }),
 	UPC_EAN_EXTENSION(new java.lang.String[][] { new java.lang.String[] { "en_US", "UPC EAN Extension" } });
 
-	private java.util.Map<java.lang.String, java.lang.String> captions;
+	private final java.util.Map<java.lang.String, java.lang.String> captions;
 
 	private BarcodeFormat(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
-		for (java.lang.String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<>();
+		for (java.lang.String[] captionString : captionStrings) {
 			captions.put(captionString[0], captionString[1]);
+		}
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		if (captions.containsKey(languageCode))
-			return captions.get(languageCode);
-		return captions.get("en_US");
+		return captions.getOrDefault(languageCode, "en_US");
 	}
 
 	public java.lang.String getCaption()

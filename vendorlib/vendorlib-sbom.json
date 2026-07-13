@@ -1,0 +1,287 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.4",
+  "version" : 1,
+  "metadata" : {
+    "tools" : [
+      {
+        "vendor" : "CycloneDX",
+        "name" : "cyclonedx-gradle-plugin",
+        "version" : "1.10.0"
+      }
+    ],
+    "component" : {
+      "type" : "application",
+      "bom-ref" : "pkg:maven/com.mendix/temp@1.0.0?type=jar",
+      "group" : "com.mendix",
+      "name" : "temp",
+      "version" : "1.0.0",
+      "purl" : "pkg:maven/com.mendix/temp@1.0.0?type=jar"
+    }
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.google.zxing/javase@3.5.4?type=jar",
+      "group" : "com.google.zxing",
+      "name" : "javase",
+      "version" : "3.5.4",
+      "description" : "Java SE-specific extensions to core ZXing library",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "55e7296a0c9a75d4e974e536e1d2e65f"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "5393a868b60694a181a8470a85f89a4bec3dce2e"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "1966831f473d72ff7720578419ab113f6417a97234a1710d2bccc650f5ae0c12"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "5d6528e5c367fd5b476b01f368df40f7948b8bf0ae96deb4aba7d8eb16cfe9689481cdb5a4908074f2cf2dbe783795d4ce141c0ca4522b88533b088cb221dd33"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "8befe9961ae5e039bab43ffb12fd2afab297e9f6648d09dce12d8b0a7c9510473a3e8a14fb344ce927b1ef97ee0034ce"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "71b9f18291572d37bf40112249ec7b0217de975bdc4003d8c142f326d9e78aee7ce8bd945b0ff4778d5b7472e5bc3694"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "073f2230d7ade65b28a94eeb14546c5f3b9172219c79583bc2f21390da39cdc1"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "228e4b5e4070bf4a480c89f03bd74dcf7fca8b23232347e24b188fe6119d084b285fb71f316cb270ce031a2eb90bcc83b7636bde0c29327872bc330ceed32b45"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "Apache-2.0"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/com.google.zxing/javase@3.5.4?type=jar",
+      "modified" : false
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.github.jai-imageio/jai-imageio-core@1.4.0?type=jar",
+      "publisher" : "jai-imageio GitHub group",
+      "group" : "com.github.jai-imageio",
+      "name" : "jai-imageio-core",
+      "version" : "1.4.0",
+      "description" : "Java Advanced Imaging Image I/O Tools API core, but without the classes involved with javax.media.jai dependencies, JPEG2000 or codecLibJIIO, meaning that this library can be distributed under the modified BSD license and should be GPL compatible.",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "6978d733bfb55c0a82639f724fe5f3bb"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "fb6d79b929556362a241b2f65a04e538062f0077"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "8ad3c68e9efffb10ac87ff8bc589adf64b04a729c5194c079efd0643607fd72a"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "5fb01617717fdc6db514fe6da2b253c3d925326190a8ba101941f29bff6e3c147e6216c501ca66b4d4051d213b1c05fadb3707563782bfcc5674357338786c01"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "abfb07fec06128894a0b8f59f9c98acde24721d776c82609c587f3ae1a4a124a0ac88e532244241edacd6fc7fc44b4e4"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "d1f54a3a9c259dfc8d724365bc7a26a03512b8585dfce02d3a3c8d47a1b23e9c495862846c896eb1202fe2611a3cb989"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "bfa5a77a8af9e45843dff421e3fba2b433966675ad00fed54958bc3abdfef1d8"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "b7a52696c362e73dba1aa0e82437f1b15a5463b887e18866d0925b0360a56a0980fc4b538e5c85767bc3bd4afc3d642c5355b6d681aaccea5837d5b726409d3f"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "name" : "BSD 3-clause License w/nuclear disclaimer",
+            "url" : "LICENSE.txt"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/com.github.jai-imageio/jai-imageio-core@1.4.0?type=jar",
+      "modified" : false,
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://github.com/jai-imageio/"
+        },
+        {
+          "type" : "distribution",
+          "url" : "https://api.bintray.com/maven/jai-imageio/maven/jai-imageio-core-standalone"
+        },
+        {
+          "type" : "issue-tracker",
+          "url" : "https://github.com/jai-imageio/jai-imageio-core/issues"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/jai-imageio/jai-imageio-core/"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.jcommander/jcommander@1.85?type=jar",
+      "group" : "org.jcommander",
+      "name" : "jcommander",
+      "version" : "1.85",
+      "description" : "Command line parsing library for Java",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "8e650d693e8a8bfbf6488898a4b6473d"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "c6a75d1d1720c69a4cbb5409adee506bd5421f38"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "fa7552d2831a2b20778d86851d093edca68fbc0a77f792b6223110e4fae67a70"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "aa1d19723c83de1f54f6f645121ab283403ece5ba78319c9daa4418c421e26c7fbd8bc36d35f6ed4cd9b8ae25d6daa2bc36818a1659cec8c5550441d6fb609d0"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "4ffd9654921be0ac4fd586ccef6f66550292be5e37337041e61e158535222294fb68148731ac4d858ed80838d9920824"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "beccbbffb6eb9917428f835da4f99812ef610755247080b5d1534b3605a3aa0c7007735978536d3bd57751d7840bc0cc"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "61b113a21ec0c11791dc1b21f1fe17281814aac258cb91aff555e102d4781000"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "c7f625a20e00a82a51a9e8fb91d0072b127b3bef59db3a18149a91767916d852a377f28498f6b0d03d6adf719f93c293affb11369a4df55b20a4d628997c6c40"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "Apache-2.0"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.jcommander/jcommander@1.85?type=jar",
+      "modified" : false,
+      "externalReferences" : [
+        {
+          "type" : "issue-tracker",
+          "url" : "https://github.com/cbeust/jcommander/issues"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/cbeust/jcommander"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.google.zxing/core@3.5.4?type=jar",
+      "group" : "com.google.zxing",
+      "name" : "core",
+      "version" : "3.5.4",
+      "description" : "Core barcode encoding/decoding library",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "23cc13611f7f2202b9988220fa28a115"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "955fcd6bcd0723ddfb8ee6ed502d5fdf0e9676a9"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "71de5d89341b5fcf5dd89da7f44e84d825d0e084cdf3ec77c9abe26b0f0ceb13"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "967023e2aa3268cfde113b658c6dae70188d5e24e43fc8bcd414592225d66d5c2203045a32f7b185bab884990ec66dcb1ce93b7f61906f666c7ccd0646c8a764"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "1062e370feac17a8f986fe0d062c8031928c29b6932c6a3ea1060be328255d509b0ff5beb7fd18d986077d523c9ace61"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "9fed1b8568ccd64e5701d57ec249407f2eb1ccc7aee0539d8aebbee5c35ae92170d7b6c7754d3ef6ad9860af880872ee"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "f65774d6c87a36155c69250275e8e854193eef4fe84152d99d42ea45398a05f1"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "1efcc072331784e5dec7b5fb6db7e8d8a231c0b10ae3a7b85dc634683208c9addf45b6d740b5a8b05e4c799d165063f65d9d294b88e0edbf7d13bb39facd5c04"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "Apache-2.0"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/com.google.zxing/core@3.5.4?type=jar",
+      "modified" : false
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "pkg:maven/com.github.jai-imageio/jai-imageio-core@1.4.0?type=jar",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "pkg:maven/com.google.zxing/core@3.5.4?type=jar",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "pkg:maven/com.google.zxing/javase@3.5.4?type=jar",
+      "dependsOn" : [
+        "pkg:maven/com.google.zxing/core@3.5.4?type=jar",
+        "pkg:maven/org.jcommander/jcommander@1.85?type=jar",
+        "pkg:maven/com.github.jai-imageio/jai-imageio-core@1.4.0?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/com.mendix/temp@1.0.0?type=jar",
+      "dependsOn" : [
+        "pkg:maven/com.google.zxing/core@3.5.4?type=jar",
+        "pkg:maven/com.google.zxing/javase@3.5.4?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/org.jcommander/jcommander@1.85?type=jar",
+      "dependsOn" : [ ]
+    }
+  ]
+}

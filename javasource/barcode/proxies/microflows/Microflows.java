@@ -4,27 +4,46 @@
 
 package barcode.proxies.microflows;
 
-import java.util.HashMap;
-import java.util.Map;
 import com.mendix.core.Core;
-import com.mendix.core.CoreException;
-import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
-public class Microflows
+public final class Microflows
 {
+	/**
+	 * Private constructor to prevent instantiation of this class. 
+	 */
+	private Microflows() {}
+
 	// These are the microflows for the Barcode module
-	public static void aCT_Test(IContext context, barcode.proxies.BarcodeTest _barcodeTest)
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestBuilder(
+		barcode.proxies.BarcodeTest _barcodeTest
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("BarcodeTest", _barcodeTest == null ? null : _barcodeTest.getMendixObject());
-		Core.microflowCall("Barcode.ACT_Test").withParams(params).execute(context);
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("Barcode.ACT_Test");
+		builder = builder.withParam("BarcodeTest", _barcodeTest);
+		return builder;
 	}
+
+	public static void aCT_Test(
+		IContext context,
+		barcode.proxies.BarcodeTest _barcodeTest
+	)
+	{
+		aCT_TestBuilder(
+				_barcodeTest
+			)
+			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder dS_GetBarcodeTestBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("Barcode.DS_GetBarcodeTest");
+		return builder;
+	}
+
 	public static barcode.proxies.BarcodeTest dS_GetBarcodeTest(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		IMendixObject result = (IMendixObject)Core.microflowCall("Barcode.DS_GetBarcodeTest").withParams(params).execute(context);
-		return result == null ? null : barcode.proxies.BarcodeTest.initialize(context, result);
+		Object result = dS_GetBarcodeTestBuilder().execute(context);
+		return result == null ? null : barcode.proxies.BarcodeTest.initialize(context, (IMendixObject) result);
 	}
 }

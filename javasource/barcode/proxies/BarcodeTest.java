@@ -4,7 +4,7 @@
 
 package barcode.proxies;
 
-public class BarcodeTest
+public class BarcodeTest implements com.mendix.systemwideinterfaces.core.IEntityProxy
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject barcodeTestMendixObject;
 
@@ -26,7 +26,7 @@ public class BarcodeTest
 		Format("Format"),
 		BarcodeTest_TestOutput("Barcode.BarcodeTest_TestOutput");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -42,32 +42,28 @@ public class BarcodeTest
 
 	public BarcodeTest(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "Barcode.BarcodeTest"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected BarcodeTest(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject barcodeTestMendixObject)
 	{
-		if (barcodeTestMendixObject == null)
+		if (barcodeTestMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("Barcode.BarcodeTest", barcodeTestMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a Barcode.BarcodeTest");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, barcodeTestMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.barcodeTestMendixObject = barcodeTestMendixObject;
 		this.context = context;
 	}
 
 	/**
-	 * @deprecated Use 'BarcodeTest.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static barcode.proxies.BarcodeTest initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return barcode.proxies.BarcodeTest.load(context, mendixIdentifier);
-	}
-
-	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static barcode.proxies.BarcodeTest initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -80,37 +76,6 @@ public class BarcodeTest
 		return barcode.proxies.BarcodeTest.initialize(context, mendixObject);
 	}
 
-	/**
-	 * Commit the changes made on this proxy object.
-	 */
-	public final void commit() throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Commit the changes made on this proxy object using the specified context.
-	 */
-	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object.
-	 */
-	public final void delete()
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object using the specified context.
-	 */
-	public final void delete(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
 	/**
 	 * @return value of Text
 	 */
@@ -220,7 +185,7 @@ public class BarcodeTest
 	}
 
 	/**
-	 * Set value of Format
+	 * Get value of Format
 	 * @param format
 	 */
 	public final barcode.proxies.BarcodeFormat getFormat()
@@ -235,9 +200,9 @@ public class BarcodeTest
 	public final barcode.proxies.BarcodeFormat getFormat(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.Format.toString());
-		if (obj == null)
+		if (obj == null) {
 			return null;
-
+		}
 		return barcode.proxies.BarcodeFormat.valueOf((java.lang.String) obj);
 	}
 
@@ -257,13 +222,15 @@ public class BarcodeTest
 	 */
 	public final void setFormat(com.mendix.systemwideinterfaces.core.IContext context, barcode.proxies.BarcodeFormat format)
 	{
-		if (format != null)
+		if (format != null) {
 			getMendixObject().setValue(context, MemberNames.Format.toString(), format.toString());
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Format.toString(), null);
+		}
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of BarcodeTest_TestOutput
 	 */
 	public final barcode.proxies.TestOutput getBarcodeTest_TestOutput() throws com.mendix.core.CoreException
@@ -274,13 +241,15 @@ public class BarcodeTest
 	/**
 	 * @param context
 	 * @return value of BarcodeTest_TestOutput
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final barcode.proxies.TestOutput getBarcodeTest_TestOutput(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		barcode.proxies.TestOutput result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.BarcodeTest_TestOutput.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = barcode.proxies.TestOutput.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -300,23 +269,20 @@ public class BarcodeTest
 	 */
 	public final void setBarcodeTest_TestOutput(com.mendix.systemwideinterfaces.core.IContext context, barcode.proxies.TestOutput barcodetest_testoutput)
 	{
-		if (barcodetest_testoutput == null)
+		if (barcodetest_testoutput == null) {
 			getMendixObject().setValue(context, MemberNames.BarcodeTest_TestOutput.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.BarcodeTest_TestOutput.toString(), barcodetest_testoutput.getMendixObject().getId());
+		}
 	}
 
-	/**
-	 * @return the IMendixObject instance of this proxy for use in the Core interface.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return barcodeTestMendixObject;
 	}
 
-	/**
-	 * @return the IContext instance of this proxy, or null if no IContext instance was specified at initialization.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;
@@ -325,9 +291,9 @@ public class BarcodeTest
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final barcode.proxies.BarcodeTest that = (barcode.proxies.BarcodeTest) obj;
@@ -342,21 +308,13 @@ public class BarcodeTest
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
-		return "Barcode.BarcodeTest";
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
+		return entityName;
 	}
 }
